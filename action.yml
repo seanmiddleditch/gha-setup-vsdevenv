@@ -1,5 +1,5 @@
 name: 'Setup VS Dev Environment'
-description: 'Sets VS dev environment via devenv (like vcvars) for using msbuild, cl.exe, link.exe, etc.'
+description: 'Sets VS dev environment variables and PATH via devenv (like vcvarsall) for using msbuild, cl.exe, link.exe, etc.'
 branding:
   icon: 'code'
   color: 'purple'
@@ -7,6 +7,12 @@ inputs:
   vswhere:
     description: 'Name or path to vswhere.exr'
     default: 'vswhere.exe'
+  arch:
+    description: 'Target build architecture'
+    default: 'amd64'
+  components:
+    description: 'List of components required in the selected VS installation (semi-colon separated)'
+    default: 'Microsoft.VisualStudio.Component.VC.Tools.x86.x64'
 outputs:
   install_path:
     description: 'VS installation path'
