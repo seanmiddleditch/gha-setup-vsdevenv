@@ -1,5 +1,8 @@
-name: 'Find VS Dev Environment'
-description: 'Sets VS dev environment variables for job'
+name: 'Setup VS Dev Environment'
+description: 'Sets VS dev environment for using msbuild, cl.exe, link.exe, etc.'
+branding:
+  icon: 'code'
+  color: 'purple'
 inputs:
   vswhere:
     description: 'Name or path to vswhere.exr'
