@@ -1,0 +1,9 @@
+name: 'Find VS Dev Environment'
+description: 'Sets VS dev environment variables for job'
+inputs:
+  vswhere:
+    description: 'Name or path to vswhere.exr'
+    default: 'vswhere.exe'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

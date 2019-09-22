@@ -1,0 +1,17 @@
+{
+  "name": "gha-setup-vsdevenv",
+  "version": "1.0.0",
+  "description": "Setup VS dev environment for GitHub Actions",
+  "main": "dist/index.js",
+  "author": "Sean Middleditch",
+  "license": "CC0",
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "ncc build index.js -o dist",
+    "dev": "npm run build && ncc run index.js"
+  },
+  "devDependencies": {
+    "@actions/core": "^1.1.1",
+    "@zeit/ncc": "^0.20.5"
+  }
+}
