@@ -20,15 +20,15 @@ try {
 
     const requiresArg = components
         .split(';')
+        .filter(s => s.length != 0)
         .map(comp => ['-requires', comp])
         .reduce((arr, pair) => arr.concat(pair), [])
 
     const vswhereArgs = [
         '-latest',
         '-products', '*',
-    ].concat(requiresArg, [
-        '-property', 'installationPath'
-    ])
+        '-property', 'installationPath',
+    ].concat(requiresArg)
 
     const vswhereResult = spawn(vswherePath, vswhereArgs, {encoding: 'utf8'})
     if (vswhereResult.error) throw vswhereResult.error
@@ -37,6 +37,7 @@ try {
 
     const installPath = installPathList[installPathList.length - 1]
     console.log(`install: ${installPath}`)
+    core.setOutput('install_path', installPath)
 
     const vsDevCmdPath = path.win32.join(installPath, 'Common7', 'Tools', 'vsdevcmd.bat')
     console.log(`vsdevcmd: ${vsDevCmdPath}`)

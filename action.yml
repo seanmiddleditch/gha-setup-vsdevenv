@@ -4,6 +4,9 @@ inputs:
   vswhere:
     description: 'Name or path to vswhere.exr'
     default: 'vswhere.exe'
+outputs:
+  install_path:
+    description: 'VS installation path'
 runs:
   using: 'node12'
   main: 'dist/index.js'
