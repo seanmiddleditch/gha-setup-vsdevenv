@@ -1,5 +1,5 @@
 name: 'Setup VS Dev Environment'
-description: 'Sets VS dev environment for using msbuild, cl.exe, link.exe, etc.'
+description: 'Sets VS dev environment via devenv (like vcvars) for using msbuild, cl.exe, link.exe, etc.'
 branding:
   icon: 'code'
   color: 'purple'
