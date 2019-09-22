@@ -30,7 +30,7 @@ Usage Example
 jobs:
   build:
     - uses: actions/checkout@master
-    - uses: seanmiddleditch/gha-setup-vsdevenv/setup-vsdevenv@master
+    - uses: seanmiddleditch/gha-setup-vsdevenv@master
     - run: |
         mkdir build
         cd build
