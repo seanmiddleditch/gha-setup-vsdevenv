@@ -57,6 +57,7 @@ try {
     
     const cmdArgs = [ '/q', '/k'].concat(vsDevCmdArgs, ['&&', 'set'])
 
+    process.env['VSCMD_DEBUG'] = '2'
     const cmdResult = spawn('cmd', cmdArgs, {encoding: 'utf8'})
     if (cmdResult.error) throw cmdResult.error
     const cmdOutput = cmdResult.output
