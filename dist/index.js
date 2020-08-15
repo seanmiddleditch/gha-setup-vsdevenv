@@ -61,10 +61,13 @@ const spawn = __webpack_require__(129).spawnSync
 try {
     // this job has nothing to do on non-Windows platforms
     if (process.platform != 'win32') {
-        process.exit(0);
+        process.exit(0)
     }
 
     const arch = core.getInput('arch') || 'amd64'
+    const hostArch = core.getInput('host_arch') || 'x86'
+    const toolsetVersion = core.getInput('toolset_version') || ''
+    const winsdk = core.getInput('winsdk') || ''
     const vswhere = core.getInput('vswhere') || 'vswhere.exe'
     const components = core.getInput('components') || 'Microsoft.VisualStudio.Component.VC.Tools.x86.x64'
 
@@ -97,12 +100,19 @@ try {
     const vsDevCmdPath = path.win32.join(installPath, 'Common7', 'Tools', 'vsdevcmd.bat')
     console.log(`vsdevcmd: ${vsDevCmdPath}`)
 
-    const cmdArgs = [
-        '/q', '/k',
-        vsDevCmdPath, `-arch=${arch}`,
-        '&&', 'set'
+    const vsDevCmdArgs = [
+        vsDevCmdPath,
+        `-arch=${arch}`,
+        `-host_arch=${hostArch}`
     ]
+    if (toolsetVersion != '')
+        vsDevCmdArgs.push(`-vcvars_vers=${toolsetVersion}`)
+    if (winsdk != '')
+        vsDevCmdArgs.push(`-winsdk=${winsdk}`)
+    
+    const cmdArgs = [ '/q', '/k'].concat(vsDevCmdArgs, ['&&', 'set'])
 
+    process.env['VSCMD_DEBUG'] = '2'
     const cmdResult = spawn('cmd', cmdArgs, {encoding: 'utf8'})
     if (cmdResult.error) throw cmdResult.error
     const cmdOutput = cmdResult.output
