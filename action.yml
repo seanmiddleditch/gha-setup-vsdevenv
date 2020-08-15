@@ -11,7 +11,7 @@ inputs:
     description: 'Target build architecture'
     default: 'amd64'
   host_arch:
-    description: 'Host architecture (x86 or amd64)
+    description: 'Host architecture (x86 or amd64)'
     default: 'x86'
   winsdk:
     description: 'Overrides the default WinSDK version'
