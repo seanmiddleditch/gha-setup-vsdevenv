@@ -10,6 +10,15 @@ inputs:
   arch:
     description: 'Target build architecture'
     default: 'amd64'
+  host_arch:
+    description: 'Host architecture (x86 or amd64)'
+    default: 'x86'
+  winsdk:
+    description: 'Overrides the default WinSDK version'
+    default: ''
+  toolset_version:
+    description: 'Overrides the default toolset version'
+    default: ''
   components:
     description: 'List of components required in the selected VS installation (semi-colon separated)'
     default: 'Microsoft.VisualStudio.Component.VC.Tools.x86.x64'
