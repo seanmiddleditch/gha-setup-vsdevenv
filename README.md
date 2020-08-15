@@ -18,6 +18,8 @@ Inputs
 
 - `vswhere`: Path to `vswhere.exe` (default system-installed copy).
 - `arch`: Build architecture (default `amd64`).
+- `host_arch`: Host architecture (default `x86`).
+- `toolset_version`: Build toolset version override.
 - `components`: List of required VS components, semi-colon separated.
   (default `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`)
 
