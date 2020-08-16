@@ -19,5 +19,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
       - uses: ./
-      - run: cl.exe
+      - run: cl /EHsc tests/test.cpp && tests/test.exe
+        shell: bash
         if: runner.os == 'Windows'
+
