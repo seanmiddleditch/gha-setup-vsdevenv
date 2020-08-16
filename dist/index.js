@@ -65,7 +65,7 @@ try {
     }
 
     const arch = core.getInput('arch') || 'amd64'
-    const hostArch = core.getInput('host_arch') || 'x86'
+    const hostArch = core.getInput('host_arch') || 'x86_amd64'
     const toolsetVersion = core.getInput('toolset_version') || ''
     const winsdk = core.getInput('winsdk') || ''
     const vswhere = core.getInput('vswhere') || 'vswhere.exe'
