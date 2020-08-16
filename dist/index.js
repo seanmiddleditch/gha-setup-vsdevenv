@@ -65,7 +65,7 @@ try {
     }
 
     const arch = core.getInput('arch') || 'amd64'
-    const hostArch = core.getInput('host_arch') || 'x86_amd64'
+    const hostArch = core.getInput('host_arch') || ''
     const toolsetVersion = core.getInput('toolset_version') || ''
     const winsdk = core.getInput('winsdk') || ''
     const vswhere = core.getInput('vswhere') || 'vswhere.exe'
@@ -88,6 +88,8 @@ try {
         '-property', 'installationPath',
     ].concat(requiresArg)
 
+    console.log(`$ ${vswherePath} ${vswhereArgs.join(' ')}`)
+
     const vswhereResult = spawn(vswherePath, vswhereArgs, {encoding: 'utf8'})
     if (vswhereResult.error) throw vswhereResult.error
     const installPathList = vswhereResult.output.filter(s => !!s).map(s => s.trim())
@@ -100,17 +102,17 @@ try {
     const vsDevCmdPath = path.win32.join(installPath, 'Common7', 'Tools', 'vsdevcmd.bat')
     console.log(`vsdevcmd: ${vsDevCmdPath}`)
 
-    const vsDevCmdArgs = [
-        vsDevCmdPath,
-        `-arch=${arch}`,
-        `-host_arch=${hostArch}`
-    ]
+    const vsDevCmdArgs = [ vsDevCmdPath, `-arch=${arch}` ]
+    if (hostArch != '')
+        vsDevCmdArgs.push(`-host_arch=${hostArch}`)
     if (toolsetVersion != '')
         vsDevCmdArgs.push(`-vcvars_vers=${toolsetVersion}`)
     if (winsdk != '')
         vsDevCmdArgs.push(`-winsdk=${winsdk}`)
     
     const cmdArgs = [ '/q', '/k'].concat(vsDevCmdArgs, ['&&', 'set'])
+
+    console.log(`$ cmd ${cmdArgs.join(' ')}`)
 
     const cmdResult = spawn('cmd', cmdArgs, {encoding: 'utf8'})
     if (cmdResult.error) throw cmdResult.error

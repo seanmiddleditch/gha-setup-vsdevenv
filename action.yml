@@ -12,7 +12,7 @@ inputs:
     default: 'amd64'
   host_arch:
     description: 'Host architecture (x86, x86_amd64, or amd64)'
-    default: 'x86_amd64'
+    default: ''
   winsdk:
     description: 'Overrides the default WinSDK version'
     default: ''
