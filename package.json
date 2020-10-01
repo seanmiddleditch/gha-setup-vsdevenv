@@ -11,7 +11,7 @@
     "dev": "npm run build && ncc run index.js"
   },
   "devDependencies": {
-    "@actions/core": "^1.1.1",
+    "@actions/core": "^1.2.6",
     "@zeit/ncc": "^0.20.5"
   }
 }
