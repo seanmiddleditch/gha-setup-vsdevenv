@@ -188,24 +188,17 @@ try {
     const completeEnv = cmdOutput
         .filter(s => s.indexOf('=') != -1)
         .map(s => s.split('=', 2))
-    const filteredEnv = completeEnv
-        .filter(([key, _]) => key != 'Path' && !process.env[key])
+    const newEnvVars = completeEnv
+        .filter(([key, _]) => !process.env[key])
+    const newPath = completeEnv
+                        .filter(([key, _]) => key == 'Path')
+                        .map(([_, value]) => value)
+                        .join(';');
 
-    for (const [key, value] of filteredEnv) {
+    for (const [key, value] of newEnvVars) {
         core.exportVariable(key, value)
     }
-
-    const pathEntries = process.env['Path'].split(';')
-    const newPathEntries = completeEnv
-        .filter(([key, _]) => key == 'Path')
-        .map(([_, value]) => value)
-        .join(';')
-        .split(';')
-        .filter(path => pathEntries.indexOf(path) == -1)
-
-    for (const path of newPathEntries) {
-        core.addPath(path)
-    }
+    core.exportVariable('Path', newPath);
 
     console.log('environment updated')
 } catch (error) {
