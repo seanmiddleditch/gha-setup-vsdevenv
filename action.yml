@@ -26,5 +26,5 @@ outputs:
   install_path:
     description: 'VS installation path'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
