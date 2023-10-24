@@ -51,7 +51,7 @@ try {
     if (hostArch != '')
         vsDevCmdArgs.push(`-host_arch=${hostArch}`)
     if (toolsetVersion != '')
-        vsDevCmdArgs.push(`-vcvars_vers=${toolsetVersion}`)
+        vsDevCmdArgs.push(`-vcvars_ver=${toolsetVersion}`)
     if (winsdk != '')
         vsDevCmdArgs.push(`-winsdk=${winsdk}`)
     
