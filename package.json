@@ -4,7 +4,7 @@
   "description": "Setup VS dev environment for GitHub Actions",
   "main": "dist/index.js",
   "author": "Sean Middleditch",
-  "license": "CC0",
+  "license": "MIT",
   "scripts": {
     "postinstall": "npm run build",
     "build": "ncc build index.js -o dist",
