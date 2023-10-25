@@ -22,6 +22,9 @@ inputs:
   components:
     description: 'List of components required in the selected VS installation (semi-colon separated)'
     default: 'Microsoft.VisualStudio.Component.VC.Tools.x86.x64'
+  verbose:
+    description: 'Display additional information about the VS Installation'
+    default: false
 outputs:
   install_path:
     description: 'VS installation path'

@@ -15,6 +15,7 @@ try {
     const winsdk = core.getInput('winsdk') || ''
     const vswhere = core.getInput('vswhere') || 'vswhere.exe'
     const components = core.getInput('components') || 'Microsoft.VisualStudio.Component.VC.Tools.x86.x64'
+    const verbose = core.getInput('verbose') || false
 
     const vsInstallerPath = path.win32.join(process.env['ProgramFiles(x86)'], 'Microsoft Visual Studio', 'Installer')
     const vswherePath = path.win32.resolve(vsInstallerPath, vswhere)
@@ -38,6 +39,12 @@ try {
 
     const vswhereResult = spawn(vswherePath, vswhereArgs, {encoding: 'utf8'})
     if (vswhereResult.error) throw vswhereResult.error
+
+    if (verbose) {
+      const details = spawn(vswherePath, ['-nologo', '-latest', '-products', '*'] + requiresArg, { encoding: 'utf8' })
+      console.log(details.output)
+    }
+
     const installPathList = vswhereResult.output.filter(s => !!s).map(s => s.trim())
     if (installPathList.length == 0) throw new Error('Could not find compatible VS installation')
 
