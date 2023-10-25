@@ -21,8 +21,8 @@ Inputs
 - `host_arch`: Host architecture override.
 - `winsdk`: WinSDK version override.
 - `toolset_version`: Build toolset version override.
-- `components`: List of required VS components, semi-colon separated.
-  (default `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`)
+- `components`: List of required VS components, semi-colon separated. (default `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`)
+- `verbose`: Display information about the installation that `vswhere` selects.
 
 Outputs
 -------
@@ -40,8 +40,8 @@ Usage Example
 ```yaml
 jobs:
   build:
-    - uses: actions/checkout@master
-    - uses: seanmiddleditch/gha-setup-vsdevenv@master
+    - uses: actions/checkout@v4
+    - uses: compnerd/gha-setup-vsdevenv@main
     - run: |
         mkdir build
         cd build
