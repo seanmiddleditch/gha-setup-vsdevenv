@@ -28,6 +28,7 @@ try {
         .reduce((arr, pair) => arr.concat(pair), [])
 
     const vswhereArgs = [
+        '-nologo',
         '-latest',
         '-products', '*',
         '-property', 'installationPath',
