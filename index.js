@@ -41,7 +41,12 @@ try {
     if (vswhereResult.error) throw vswhereResult.error
 
     if (verbose) {
-      const details = spawn(vswherePath, ['-nologo', '-latest', '-products', '*'] + requiresArg, { encoding: 'utf8' })
+      const args = [
+        '-nologo',
+        '-latest',
+        '-products', '*',
+      ].concat(requiresArg)
+      const details = spawn(vswherePath, args, { encoding: 'utf8' })
       console.log(details.output)
     }
 
