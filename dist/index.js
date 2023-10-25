@@ -383,7 +383,7 @@ try {
         '-products', '*',
       ].concat(requiresArg)
       const details = spawn(vswherePath, args, { encoding: 'utf8' })
-      console.log(details.output)
+      console.log(details.output.join(''))
     }
 
     const installPathList = vswhereResult.output.filter(s => !!s).map(s => s.trim())
