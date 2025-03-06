@@ -4,7 +4,7 @@ setup-vsdevenv
 > [!CAUTION]
 > I am generally an absentee maintainer. I update this package if and when I
 > personally need an update. It may be *years* before I see or respond to your
-> issues or pull  request. I do not recommend that you rely on this package for
+> issues or pull requests. I do not recommend that you rely on this package for
 > critical infrastructure. If you find this action useful and do want to use it,
 > I suggest that you make a copy of it into your own repository.
 
